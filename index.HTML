@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DORAREXBET</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f7;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .nav-buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-buttons button:hover {
+            background-color: #003d82;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .container.active {
+            display: block;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+        .match-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .match-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>DORAREXBET</h1>
+</header>
+
+<div class="nav-buttons">
+    <button onclick="showSection('la-liga')">La Liga</button>
+    <button onclick="showSection('nba')">NBA</button>
+    <button onclick="showSection('hipodromo')">Hipódromo</button>
+</div>
+
+<div class="container" id="la-liga">
+    <div class="warning">
+        <strong> ⚠️ Advertencia:</strong> Las apuestas pueden ser adictivas. Juega con responsabilidad y solo con dinero que puedas permitirte perder.
+    </div>
+    <section>
+        <h2>La Liga</h2>
+        <!-- Partidos de La Liga -->
+        <div class="match-card">
+            <div class="match-header">
+                <h3>Mallorca vs Valencia</h3>
+            </div>
+            <label>Cuota Local: 2.35</label>
+            <input type="number" placeholder="Monto Local" id="m1l">
+            <label>Cuota Empate: 3.10</label>
+            <input type="number" placeholder="Monto Empate" id="m1e">
+            <label>Cuota Visitante: 2.80</label>
+            <input type="number" placeholder="Monto Visitante" id="m1v">
+            <button onclick="calcular('m1', 2.35, 3.10, 2.80)">Calcular</button>
+            <div id="result-m1" class="result"></div>
+        </div>
+
+        <div class="match-card">
+            <div class="match-header">
+                <h3>Barcelona vs Las Palmas</h3>
+            </div>
+            <label>Cuota Local: 1.40</label>
+            <input type="number" placeholder="Monto Local" id="m2l">
+            <label>Cuota Empate: 4.20</label>
+            <input type="number" placeholder="Monto Empate" id="m2e">
+            <label>Cuota Visitante: 7.50</label>
+            <input type="number" placeholder="Monto Visitante" id="m2v">
+            <button onclick="calcular('m2', 1.40, 4.20, 7.50)">Calcular</button>
+            <div id="result-m2" class="result"></div>
+        </div>
+
+        <div class="match-card">
+    <div class="match-header">
+        <h3>Alavés vs Leganés</h3>
+    </div>
+    <label>Cuota Local: 2.50</label>
+    <input type="number" placeholder="Monto Local" id="m3l">
+    <label>Cuota Empate: 3.20</label>
+    <input type="number" placeholder="Monto Empate" id="m3e">
+    <label>Cuota Visitante: 2.90</label>
+    <input type="number" placeholder="Monto Visitante" id="m3v">
+    <button onclick="calcular('m3', 2.50, 3.20, 2.90)">Calcular</button>
+    <div id="result-m3" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Espanyol vs Celta de Vigo</h3>
+    </div>
+    <label>Cuota Local: 1.75</label>
+    <input type="number" placeholder="Monto Local" id="m4l">
+    <label>Cuota Empate: 3.50</label>
+    <input type="number" placeholder="Monto Empate" id="m4e">
+    <label>Cuota Visitante: 4.00</label>
+    <input type="number" placeholder="Monto Visitante" id="m4v">
+    <button onclick="calcular('m4', 1.75, 3.50, 4.00)">Calcular</button>
+    <div id="result-m4" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Valladolid vs Atlético de Madrid</h3>
+    </div>
+    <label>Cuota Local: 3.00</label>
+    <input type="number" placeholder="Monto Local" id="m5l">
+    <label>Cuota Empate: 3.10</label>
+    <input type="number" placeholder="Monto Empate" id="m5e">
+    <label>Cuota Visitante: 2.50</label>
+    <input type="number" placeholder="Monto Visitante" id="m5v">
+    <button onclick="calcular('m5', 3.00, 3.10, 2.50)">Calcular</button>
+    <div id="result-m5" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Villarreal vs Girona</h3>
+    </div>
+    <label>Cuota Local: 1.90</label>
+    <input type="number" placeholder="Monto Local" id="m6l">
+    <label>Cuota Empate: 3.40</label>
+    <input type="number" placeholder="Monto Empate" id="m6e">
+    <label>Cuota Visitante: 4.50</label>
+    <input type="number" placeholder="Monto Visitante" id="m6v">
+    <button onclick="calcular('m6', 1.90, 3.40, 4.50)">Calcular</button>
+    <div id="result-m6" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Real Madrid vs Getafe</h3>
+    </div>
+    <label>Cuota Local: 1.50</label>
+    <input type="number" placeholder="Monto Local" id="m7l">
+    <label>Cuota Empate: 4.00</label>
+    <input type="number" placeholder="Monto Empate" id="m7e">
+    <label>Cuota Visitante: 6.00</label>
+    <input type="number" placeholder="Monto Visitante" id="m7v">
+    <button onclick="calcular('m7', 1.50, 4.00, 6.00)">Calcular</button>
+    <div id="result-m7" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Rayo Vallecano vs Athletic Bilbao</h3>
+    </div>
+    <label>Cuota Local: 2.20</label>
+    <input type="number" placeholder="Monto Local" id="m8l">
+    <label>Cuota Empate: 3.30</label>
+    <input type="number" placeholder="Monto Empate" id="m8e">
+    <label>Cuota Visitante: 2.60</label>
+    <input type="number" placeholder="Monto Visitante" id="m8v">
+    <button onclick="calcular('m8', 2.20, 3.30, 2.60)">Calcular</button>
+    <div id="result-m8" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Real Sociedad vs Betis</h3>
+    </div>
+    <label>Cuota Local: 2.00</label>
+    <input type="number" placeholder="Monto Local" id="m9l">
+    <label>Cuota Empate: 3.60</label>
+    <input type="number" placeholder="Monto Empate" id="m9e">
+    <label>Cuota Visitante: 3.00</label>
+    <input type="number" placeholder="Monto Visitante" id="m9v">
+    <button onclick="calcular('m9', 2.00, 3.60, 3.00)">Calcular</button>
+    <div id="result-m9" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Sevilla vs Osasuna</h3>
+    </div>
+    <label>Cuota Local: 1.85</label>
+    <input type="number" placeholder="Monto Local" id="m10l">
+    <label>Cuota Empate: 3.25</label>
+    <input type="number" placeholder="Monto Empate" id="m10e">
+    <label>Cuota Visitante: 4.20</label>
+    <input type="number" placeholder="Monto Visitante" id="m10v">
+    <button onclick="calcular('m10', 1.85, 3.25, 4.20)">Calcular</button>
+    <div id="result-m10" class="result"></div>
+</div>
+
+    </section>
+</div>
+
+<div class="container" id="nba">
+    <div class="warning">
+        <strong>⚠️ Advertencia:</strong> Las apuestas pueden ser adictivas. Juega con responsabilidad y solo con dinero que puedas permitirte perder.
+    </div>
+    <section>
+        <h2>NBA</h2>
+        <!-- Partidos de NBA -->
+        <div class="match-card">
+            <div class="match-header">
+                <h3>Lakers vs Warriors</h3>
+            </div>
+            <label>Cuota Local: 1.80</label>
+            <input type="number" placeholder="Monto Local" id="nba1l">
+            <label>Cuota Visitante: 2.10</label>
+            <input type="number" placeholder="Monto Visitante" id="nba1v">
+            <button onclick="calcular('nba1', 1.80, null, 2.10)">Calcular</button>
+            <div id="result-nba1" class="result"></div>
+        </div>
+
+        <div class="match-card">
+    <div class="match-header">
+        <h3>Golden State Warriors vs Denver Nuggets</h3>
+    </div>
+    <label>Cuota Local: 1.90</label>
+    <input type="number" placeholder="Monto Local" id="nba2l">
+    <label>Cuota Visitante: 2.00</label>
+    <input type="number" placeholder="Monto Visitante" id="nba2v">
+    <button onclick="calcular('nba2', 1.90, null, 2.00)">Calcular</button>
+    <div id="result-nba2" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Philadelphia 76ers vs Milwaukee Bucks</h3>
+    </div>
+    <label>Cuota Local: 2.10</label>
+    <input type="number" placeholder="Monto Local" id="nba3l">
+    <label>Cuota Visitante: 1.80</label>
+    <input type="number" placeholder="Monto Visitante" id="nba3v">
+    <button onclick="calcular('nba3', 2.10, null, 1.80)">Calcular</button>
+    <div id="result-nba3" class="result"></div>
+</div>
+
+<div class="match-card">
+    <div class="match-header">
+        <h3>Miami Heat vs Boston Celtics</h3>
+    </div>
+    <label>Cuota Local: 3.6</label>
+    <input type="number" placeholder="Monto Local" id="nba4l">
+    <label>Cuota Visitante: 2.25</label>
+    <input type="number" placeholder="Monto Visitante" id="nba4v">
+    <button onclick="calcular('nba4', 3.6, null, 2.25)">Calcular</button>
+    <div id="result-nba4" class="result"></div>
+</div>
+
+    </section>
+</div>
+
+<div class="container" id="hipodromo">
+    <div class="warning">
+        <strong>⚠️ Advertencia:</strong> Las apuestas pueden ser adictivas. Juega con responsabilidad y solo con dinero que puedas permitirte perder.
+    </div>
+    <section>
+        <h2>Hipódromo</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Caballo</th>
+                    <th>Cuota</th>
+                    <th>Monto Apostado</th>
+                    <th>Acción</th>
+                    <th>Resultados</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Caballo Relámpago</td>
+                    <td>3.50</td>
+                    <td><input type="number" placeholder="Monto" id="h1"></td>
+                    <td><button onclick="calcularSimple('h1', 3.50)">Calcular</button></td>
+                    <td id="result-h1" class="result"></td>
+                </tr>
+                <tr>
+                    <td>Caballo Estrella</td>
+                    <td>4.00</td>
+                    <td><input type="number" placeholder="Monto" id="h2"></td>
+                    <td><button onclick="calcularSimple('h2', 4.00)">Calcular</button></td>
+                    <td id="result-h 2" class="result"></td>
+                </tr>
+                <tr>
+                    <td>Caballo Veloz</td>
+                    <td>2.80</td>
+                    <td><input type="number" placeholder="Monto" id="h3"></td>
+                    <td><button onclick="calcularSimple('h3', 2.80)">Calcular</button></td>
+                    <td id="result-h3" class="result"></td>
+                </tr>
+                <tr>
+                    <td>Caballo Fuego</td>
+                    <td>5.00</td>
+                    <td><input type="number" placeholder="Monto" id="h4"></td>
+                    <td><button onclick="calcularSimple('h4', 5.00)">Calcular</button></td>
+                    <td id="result-h4" class="result"></td>
+                </tr>
+                <tr>
+                    <td>Caballo Nieve</td>
+                    <td>6.50</td>
+                    <td><input type="number" placeholder="Monto" id="h5"></td>
+                    <td><button onclick="calcularSimple('h5', 6.50)">Calcular</button></td>
+                    <td id="result-h5" class="result"></td>
+                </tr>
+                <tr>
+                    <td>Caballo Trueno</td>
+                    <td>3.20</td>
+                    <td><input type="number" placeholder="Monto" id="h6"></td>
+                    <td><button onclick="calcularSimple('h6', 3.20)">Calcular</button></td>
+                    <td id="result-h6" class="result"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.container').forEach(container => {
+            container.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    function calcular(id, cuotaLocal, cuotaEmpate, cuotaVisitante) {
+        const local = document.getElementById(`${id}l`).value;
+        const empate = document.getElementById(`${id}e`) ? document.getElementById(`${id}e`).value : 0;
+        const visitante = document.getElementById(`${id}v`).value;
+        let resultado = "";
+
+        if (local) {
+            const gananciaBruta = local * cuotaLocal;
+            const gananciaNeta = gananciaBruta - local;
+            resultado += `<p>Ganancia Local: S/ ${gananciaBruta.toFixed(2)} (Neta: S/ ${gananciaNeta.toFixed(2)})</p>`;
+        }
+
+        if (empate) {
+            const gananciaBruta = empate * cuotaEmpate;
+            const gananciaNeta = gananciaBruta - empate;
+            resultado += `<p>Ganancia Empate: S/ ${gananciaBruta.toFixed(2)} (Neta: S/ ${gananciaNeta.toFixed(2)})</p>`;
+        }
+
+        if (visitante) {
+            const gananciaBruta = visitante * cuotaVisitante;
+            const gananciaNeta = gananciaBruta - visitante;
+            resultado += `<p>Ganancia Visitante: S/ ${gananciaBruta.toFixed(2)} (Neta: S/ ${gananciaNeta.toFixed(2)})</p>`;
+        }
+
+        document.getElementById(`result-${id}`).innerHTML = resultado;
+    }
+
+    function calcularSimple(id, cuota) {
+        const monto = document.getElementById(id).value;
+        if (monto) {
+            const gananciaBruta = monto * cuota;
+            const gananciaNeta = gananciaBruta - monto;
+            document.getElementById(`result-${id}`).innerHTML = `<p>Ganancia: S/ ${gananciaBruta.toFixed(2)} (Neta: S/ ${gananciaNeta.toFixed(2)})</p>`;
+        }
+    }
+</script>
+</body>
+</html>
